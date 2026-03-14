@@ -134,3 +134,4 @@ Opcional. Copiar desde `frontend/.env.e2e.example`:
 
 Ver [docs/DEMO_CHECKLIST.md](docs/DEMO_CHECKLIST.md) para el guion de demo de 5–7 minutos.
 # Hacka
+# Hacka
