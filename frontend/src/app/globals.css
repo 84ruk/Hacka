@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+/*
+ * Design system: paleta y variables.
+ * Contraste WCAG 2.1 AA: texto normal ≥ 4.5:1, texto grande ≥ 3:1.
+ * Variables --alert-* y --badge-* usan combinaciones verificadas ≥ 4.5:1.
+ */
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-border: #e2e8f0;
+  /* Primary: #4338ca + #ffffff ≥ 4.5:1 (AA) */
+  --primary: #4338ca;
+  --primary-hover: #3730a3;
+  --primary-foreground: #ffffff;
+  --secondary: #64748b;
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --destructive: #b91c1c;
+  --destructive-hover: #991b1b;
+  --success: #047857;
+  --warning: #b45309;
+  --radius: 0.75rem;
+  --radius-sm: 0.5rem;
+  --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+
+  /* Alert: fondos claros + texto oscuro (contraste ≥ 4.5:1) */
+  --alert-error-bg: #fef2f2;
+  --alert-error-border: #fecaca;
+  --alert-error-text: #7f1d1d;
+  --alert-success-bg: #ecfdf5;
+  --alert-success-border: #a7f3d0;
+  --alert-success-text: #064e3b;
+  --alert-warning-bg: #fffbeb;
+  --alert-warning-border: #fde68a;
+  --alert-warning-text: #78350f;
+  --alert-info-bg: #f8fafc;
+  --alert-info-border: #e2e8f0;
+  --alert-info-text: #0f172a;
+
+  /* Badge: mismo criterio WCAG AA */
+  --badge-default-bg: #f1f5f9;
+  --badge-default-text: #1e293b;
+  --badge-success-bg: #d1fae5;
+  --badge-success-text: #065f46;
+  --badge-warning-bg: #fef3c7;
+  --badge-warning-text: #92400e;
+  --badge-destructive-bg: #fee2e2;
+  --badge-destructive-text: #991b1b;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* Accesibilidad: focus visible */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Suavizar transiciones en interacciones */
+button:not(:disabled),
+a,
+[role="button"] {
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s, opacity 0.15s;
+}

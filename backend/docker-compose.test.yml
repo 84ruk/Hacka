@@ -1,0 +1,25 @@
+# PostgreSQL solo para tests e2e (Fase 8).
+# Puerto 5434 en el host para no chocar con dev (5433) ni con Postgres local (5432).
+# Uso: npm run test:db:up  /  npm run test:db:down
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: hacka-db-test
+    restart: "no"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: auth_db_test
+    ports:
+      - "5434:5432"
+    volumes:
+      - pgdata_test:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d auth_db_test"]
+      interval: 3s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  pgdata_test:
