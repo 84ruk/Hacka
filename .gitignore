@@ -4,6 +4,8 @@
 .env.*.local
 *.env
 
+/docs
+
 # Dependencias y build
 node_modules/
 dist/
