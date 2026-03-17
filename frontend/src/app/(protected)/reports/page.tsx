@@ -22,10 +22,16 @@ const ReportMap = dynamic(() => import('@/components/reports/ReportMap'), {
   loading: () => <Skeleton className="h-64 w-full rounded-lg" />,
 });
 
+const ChoroplethMap = dynamic(() => import('@/components/reports/ChoroplethMap'), {
+  ssr: false,
+  loading: () => <Skeleton className="h-96 w-full rounded-lg" />,
+});
+
 export default function ReportsPage() {
   const [reports, setReports] = useState<Report[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [mapMode, setMapMode] = useState<'markers' | 'heatmap'>('markers');
 
   const fetchReports = useCallback(async () => {
     setLoading(true);

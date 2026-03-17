@@ -24,6 +24,11 @@ const ReportMap = dynamic(() => import('@/components/reports/ReportMap'), {
   loading: () => <Skeleton className="h-72 w-full rounded-lg" />,
 });
 
+const ChoroplethMap = dynamic(() => import('@/components/reports/ChoroplethMap'), {
+  ssr: false,
+  loading: () => <Skeleton className="h-96 w-full rounded-lg" />,
+});
+
 const STATUS_OPTIONS: ReportStatus[] = ['PENDING', 'REVIEWING', 'IN_PROGRESS', 'RESOLVED'];
 const SEVERITY_OPTIONS: ReportSeverity[] = ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL'];
 
@@ -36,6 +41,7 @@ export default function AdminReportsPage() {
   const [updatingId, setUpdatingId] = useState<string | null>(null);
 
   const [filters, setFilters] = useState<ReportFilters>({ page: 1, limit: 20 });
+  const [mapMode, setMapMode] = useState<'markers' | 'heatmap'>('markers');
 
   const fetchReports = useCallback(async () => {
     setLoading(true);
@@ -151,10 +157,42 @@ export default function AdminReportsPage() {
           {!loading && reports.length > 0 && (
             <Card>
               <CardHeader>
-                <CardTitle>Mapa de reportes ({total} en total)</CardTitle>
+                <div className="flex items-center justify-between flex-wrap gap-3">
+                  <CardTitle>
+                    {mapMode === 'markers'
+                      ? `Mapa de reportes (${total} en total)`
+                      : 'Mapa de calor por zonas — San Luis Potosí'}
+                  </CardTitle>
+                  <div className="flex rounded-[var(--radius-sm)] border border-slate-300 overflow-hidden text-sm">
+                    <button
+                      onClick={() => setMapMode('markers')}
+                      className={`px-3 py-1.5 transition-colors ${
+                        mapMode === 'markers'
+                          ? 'bg-[var(--primary)] text-white'
+                          : 'bg-white text-slate-600 hover:bg-slate-50'
+                      }`}
+                    >
+                      Marcadores
+                    </button>
+                    <button
+                      onClick={() => setMapMode('heatmap')}
+                      className={`px-3 py-1.5 border-l border-slate-300 transition-colors ${
+                        mapMode === 'heatmap'
+                          ? 'bg-[var(--primary)] text-white'
+                          : 'bg-white text-slate-600 hover:bg-slate-50'
+                      }`}
+                    >
+                      Mapa de calor
+                    </button>
+                  </div>
+                </div>
               </CardHeader>
               <CardContent className="p-0 overflow-hidden rounded-b-lg">
-                <ReportMap reports={reports} className="h-72 w-full" />
+                {mapMode === 'markers' ? (
+                  <ReportMap reports={reports} className="h-72 w-full" />
+                ) : (
+                  <ChoroplethMap reports={reports} className="h-96 w-full" />
+                )}
               </CardContent>
             </Card>
           )}

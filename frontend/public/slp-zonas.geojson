@@ -1,0 +1,165 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "id": "centro", "name": "Centro Histórico" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-100.990, 22.145],
+          [-100.961, 22.145],
+          [-100.958, 22.153],
+          [-100.961, 22.163],
+          [-100.990, 22.163],
+          [-100.993, 22.155],
+          [-100.990, 22.145]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "id": "tlaxcala", "name": "Barrio de Tlaxcala" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-101.008, 22.160],
+          [-100.988, 22.158],
+          [-100.986, 22.165],
+          [-100.990, 22.178],
+          [-101.008, 22.178],
+          [-101.010, 22.168],
+          [-101.008, 22.160]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "id": "industrial", "name": "Zona Industrial Norte" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-101.015, 22.180],
+          [-100.968, 22.178],
+          [-100.965, 22.195],
+          [-100.968, 22.218],
+          [-101.015, 22.218],
+          [-101.018, 22.198],
+          [-101.015, 22.180]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "id": "tangamanga", "name": "Tangamanga / La Pila" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-101.030, 22.122],
+          [-100.993, 22.120],
+          [-100.990, 22.132],
+          [-100.993, 22.158],
+          [-101.030, 22.160],
+          [-101.033, 22.140],
+          [-101.030, 22.122]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "id": "lomas", "name": "Las Lomas / Sur" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-101.008, 22.088],
+          [-100.958, 22.086],
+          [-100.955, 22.098],
+          [-100.958, 22.128],
+          [-101.008, 22.130],
+          [-101.010, 22.108],
+          [-101.008, 22.088]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "id": "universitaria", "name": "Zona Universitaria" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-100.972, 22.133],
+          [-100.938, 22.131],
+          [-100.935, 22.143],
+          [-100.938, 22.162],
+          [-100.972, 22.163],
+          [-100.975, 22.147],
+          [-100.972, 22.133]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "id": "tequisquiapan", "name": "Tequisquiapan" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-100.968, 22.153],
+          [-100.928, 22.151],
+          [-100.925, 22.165],
+          [-100.928, 22.192],
+          [-100.968, 22.193],
+          [-100.970, 22.172],
+          [-100.968, 22.153]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "id": "morales", "name": "Delegación Morales" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-100.993, 22.165],
+          [-100.968, 22.163],
+          [-100.965, 22.175],
+          [-100.968, 22.197],
+          [-100.993, 22.198],
+          [-100.995, 22.180],
+          [-100.993, 22.165]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "id": "poniente", "name": "Fraccionamientos Poniente" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-101.045, 22.092],
+          [-101.012, 22.090],
+          [-101.010, 22.105],
+          [-101.012, 22.138],
+          [-101.045, 22.140],
+          [-101.048, 22.115],
+          [-101.045, 22.092]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "id": "periferico-sur", "name": "Periférico Sur" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-101.005, 22.053],
+          [-100.938, 22.050],
+          [-100.935, 22.065],
+          [-100.938, 22.090],
+          [-101.005, 22.092],
+          [-101.008, 22.070],
+          [-101.005, 22.053]
+        ]]
+      }
+    }
+  ]
+}
