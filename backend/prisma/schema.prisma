@@ -38,7 +38,45 @@ model User {
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
+  reports Report[]
+
   @@index([tenantId])
   @@index([status])
   @@map("users")
+}
+
+enum ReportSeverity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum ReportStatus {
+  PENDING
+  REVIEWING
+  IN_PROGRESS
+  RESOLVED
+}
+
+model Report {
+  id          String         @id @default(cuid())
+  userId      String         @map("user_id")
+  title       String
+  description String
+  latitude    Float
+  longitude   Float
+  address     String?
+  severity    ReportSeverity
+  status      ReportStatus   @default(PENDING)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([status])
+  @@index([severity])
+  @@map("reports")
 }

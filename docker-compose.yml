@@ -3,6 +3,8 @@
 # Puerto 5433 en el host para no chocar con un PostgreSQL local en 5432.
 # Conexión: postgresql://postgres:postgres@localhost:5433/auth_db
 
+name: hacka
+
 services:
   db:
     image: postgres:16-alpine
