@@ -74,10 +74,40 @@ export default function ReportsPage() {
         {!loading && reports.length > 0 && (
           <Card>
             <CardHeader>
-              <CardTitle>Mapa de reportes</CardTitle>
+              <div className="flex items-center justify-between flex-wrap gap-3">
+                <CardTitle>
+                  {mapMode === 'markers' ? 'Mapa de reportes' : 'Mapa de calor — San Luis Potosí'}
+                </CardTitle>
+                <div className="flex rounded-[var(--radius-sm)] border border-slate-300 overflow-hidden text-sm">
+                  <button
+                    onClick={() => setMapMode('markers')}
+                    className={`px-3 py-1.5 transition-colors ${
+                      mapMode === 'markers'
+                        ? 'bg-[var(--primary)] text-white'
+                        : 'bg-white text-slate-600 hover:bg-slate-50'
+                    }`}
+                  >
+                    Marcadores
+                  </button>
+                  <button
+                    onClick={() => setMapMode('heatmap')}
+                    className={`px-3 py-1.5 border-l border-slate-300 transition-colors ${
+                      mapMode === 'heatmap'
+                        ? 'bg-[var(--primary)] text-white'
+                        : 'bg-white text-slate-600 hover:bg-slate-50'
+                    }`}
+                  >
+                    Mapa de calor
+                  </button>
+                </div>
+              </div>
             </CardHeader>
             <CardContent className="p-0 overflow-hidden rounded-b-lg">
-              <ReportMap reports={reports} className="h-72 w-full" />
+              {mapMode === 'markers' ? (
+                <ReportMap reports={reports} className="h-72 w-full" />
+              ) : (
+                <ChoroplethMap reports={reports} className="h-96 w-full" />
+              )}
             </CardContent>
           </Card>
         )}
