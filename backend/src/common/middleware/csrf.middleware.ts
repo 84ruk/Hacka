@@ -10,12 +10,20 @@ import {
 } from '../../auth/auth.cookies';
 
 const SAFE_METHODS = new Set(['GET', 'HEAD', 'OPTIONS']);
-const NO_CSRF_PATHS = new Set([
+
+// Rutas exactas o prefijos que quedan fuera del CSRF (sin cookies de auth en el demo)
+const NO_CSRF_EXACT = new Set([
   '/auth/login',
   '/auth/register',
   '/auth/forgot-password',
   '/auth/reset-password',
 ]);
+const NO_CSRF_PREFIXES = ['/simulacion/', '/nodos', '/nodos/', '/alertas', '/alertas/', '/analisis', '/analisis/', '/recuperacion', '/recuperacion/', '/timeline', '/timeline/', '/logs', '/logs/'];
+
+function isNocsrfPath(path: string): boolean {
+  if (NO_CSRF_EXACT.has(path)) return true;
+  return NO_CSRF_PREFIXES.some((prefix) => path === prefix || path.startsWith(prefix));
+}
 
 @Injectable()
 export class CsrfMiddleware {
@@ -41,7 +49,7 @@ export class CsrfMiddleware {
     const method = req.method?.toUpperCase() || 'GET';
     const isSafe = SAFE_METHODS.has(method);
 
-    if (NO_CSRF_PATHS.has(path)) {
+    if (isNocsrfPath(path)) {
       next();
       return;
     }

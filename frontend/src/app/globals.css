@@ -69,3 +69,26 @@ a,
 [role="button"] {
   transition: background-color 0.15s, color 0.15s, border-color 0.15s, opacity 0.15s;
 }
+
+/* Popup de Leaflet — tema oscuro */
+.leaflet-popup-content-wrapper {
+  background-color: #0f172a;
+  color: #e2e8f0;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.leaflet-popup-tip {
+  background-color: #0f172a;
+}
+
+.leaflet-popup-close-button {
+  color: #94a3b8 !important;
+}
+
+@media print {
+  body > *:not(.print-reporte) { display: none !important; }
+  .print-reporte { display: block !important; position: static !important; }
+  @page { margin: 20mm; size: A4; }
+}
